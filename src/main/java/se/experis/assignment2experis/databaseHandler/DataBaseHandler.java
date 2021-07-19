@@ -278,7 +278,7 @@ public class DataBaseHandler {
 
             // Prepare Statement
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("SELECT COUNT(CustomerId) AS countryCount, Country FROM customers GROUP BY Country ");
+                    conn.prepareStatement("SELECT COUNT(CustomerId) AS countryCount, Country FROM customers GROUP BY Country ORDER BY countryCount DESC ");
 
             // Execute Statement
             ResultSet resultSet = preparedStatement.executeQuery();
