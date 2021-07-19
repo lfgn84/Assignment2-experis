@@ -2,6 +2,8 @@ package se.experis.assignment2experis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.experis.assignment2experis.service.CustomerService;
 
@@ -12,14 +14,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping(path={"/api/customers"})
 public class CustomerController {
     // Setup
     CustomerService service = new CustomerService();
 
-    @GetMapping("/")
-    public  String TestString(){
+    @GetMapping("/{id}")
+    public  String TestString(@PathVariable int id){
 
-        return  service.getCustomerById(1).getFirstName() + " " + service.getCustomerById(1).getLastName();
+        return  service.getCustomerById(id).getFirstName() + " " + service.getCustomerById(id).getLastName();
     }
 
 

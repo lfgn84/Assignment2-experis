@@ -32,11 +32,13 @@ public class DataBaseHandler {
 
             // Process Results
             if (resultSet.next()) {
-                customer.setCustomerId(resultSet.getString("CustomerId"));
+                customer.setCustomerId(resultSet.getInt("CustomerId"));
                 customer.setFirstName(resultSet.getString("FirstName"));
                 customer.setLastName(resultSet.getString("LastName"));
-                customer.setCity(resultSet.getString("City"));
+                customer.setCountry(resultSet.getString("Country"));
+                customer.setPostalCode(resultSet.getString("Postalcode"));
                 customer.setPhone(resultSet.getString("Phone"));
+                customer.setEmail(resultSet.getString("Email"));
 
             }
         }
