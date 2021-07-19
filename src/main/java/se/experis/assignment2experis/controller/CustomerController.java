@@ -44,6 +44,10 @@ public class CustomerController {
     public Boolean updateCustomer(){
         return service.updateCustomer(new Customer(62,"Luis", "Gutierrez", "asd", "asd", "asd", "asd"));
     }
+    @GetMapping("/country")
+    public ArrayList<String> CountryAmountInCustomers(){
+        return service.CountryAmountInCustomers();
+    }
 
 
 

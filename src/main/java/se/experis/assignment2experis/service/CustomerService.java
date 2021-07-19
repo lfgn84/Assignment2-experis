@@ -30,4 +30,7 @@ public class CustomerService {
     public Boolean updateCustomer (Customer customer){
         return dataBaseHandler.updateCustomer(customer);
     }
+    public ArrayList<String> CountryAmountInCustomers (){
+        return dataBaseHandler.CountryAmountInCustomers();
+    }
 }

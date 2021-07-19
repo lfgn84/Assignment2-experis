@@ -269,6 +269,42 @@ public class DataBaseHandler {
         }
     }
 
+    public ArrayList<String> CountryAmountInCustomers(){
+        ArrayList<String> countryList = new ArrayList<String>();
+        try {
+            // Open Connection
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection to SQLite has been established.");
+
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT COUNT(CustomerId) AS countryCount, Country FROM customers GROUP BY Country ");
+
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                countryList.add(resultSet.getString("Country") + ": " + resultSet.getString("countryCount"));
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return countryList;
+        }
+    }
+
 
 
 }
