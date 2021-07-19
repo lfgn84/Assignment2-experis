@@ -24,4 +24,7 @@ public class CustomerService {
     public Boolean addCustomer (Customer customer){
         return dataBaseHandler.addCustomer(customer);
     }
+    public Boolean updateCustomer (Customer customer){
+        return dataBaseHandler.updateCustomer(customer);
+    }
 }

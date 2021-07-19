@@ -36,6 +36,10 @@ public class CustomerController {
     public Boolean addCustomer(){
         return service.addCustomer(new Customer(1,"Markus", "Wrang", "asd", "asd", "asd", "asd"));
     }
+    @GetMapping("/update")
+    public Boolean updateCustomer(){
+        return service.updateCustomer(new Customer(62,"Luis", "Gutierrez", "asd", "asd", "asd", "asd"));
+    }
 
 
 
