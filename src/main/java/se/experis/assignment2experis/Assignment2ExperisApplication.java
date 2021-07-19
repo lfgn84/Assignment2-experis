@@ -1,4 +1,4 @@
-package com.example.assignment2experis;
+package se.experis.assignment2experis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

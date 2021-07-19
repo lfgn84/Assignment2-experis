@@ -1,4 +1,4 @@
-package com.example.assignment2experis;
+package se.experis.assignment2experis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
