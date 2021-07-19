@@ -30,6 +30,11 @@ public class CustomerController {
         return service.getAllCustomers();
     }
 
+    @GetMapping("selectCustomersLike/{name}")
+    public ArrayList<Customer> selectCustomersLike(@PathVariable String name){
+        return service.selectCustomersLike(name);
+    }
+
 
 
     /*

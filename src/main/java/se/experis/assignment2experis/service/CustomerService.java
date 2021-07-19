@@ -18,4 +18,7 @@ public class CustomerService {
     public ArrayList<Customer> getAllCustomers(){
         return dataBaseHandler.selectAllCustomers();
     }
+    public ArrayList<Customer> selectCustomersLike(String name){
+        return dataBaseHandler.selectCustomersLike(name);
+    }
 }
