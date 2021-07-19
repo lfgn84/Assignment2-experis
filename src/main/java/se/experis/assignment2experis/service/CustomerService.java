@@ -21,6 +21,9 @@ public class CustomerService {
     public ArrayList<Customer> selectCustomersLike(String name){
         return dataBaseHandler.selectCustomersLike(name);
     }
+    public ArrayList<Customer> pageCustomers(int limit, int offset){
+        return dataBaseHandler.pageCustomers(limit,offset);
+    }
     public Boolean addCustomer (Customer customer){
         return dataBaseHandler.addCustomer(customer);
     }

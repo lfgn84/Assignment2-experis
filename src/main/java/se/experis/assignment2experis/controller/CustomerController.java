@@ -31,6 +31,10 @@ public class CustomerController {
     public ArrayList<Customer> selectCustomersLike(@PathVariable String name){
         return service.selectCustomersLike(name);
     }
+    @GetMapping("/page/{limit},{offset}")
+    public ArrayList<Customer> pageCustomers(@PathVariable int limit, @PathVariable int offset){
+        return service.pageCustomers(limit, offset);
+    }
 
     @GetMapping("/add")
     public Boolean addCustomer(){

@@ -151,6 +151,53 @@ public class DataBaseHandler {
         }
     }
 
+    public ArrayList<Customer> pageCustomers(int limit, int offset){
+        ArrayList<Customer> customers = new ArrayList<Customer>();
+        try {
+            // Open Connection
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection to SQLite has been established.");
+
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT * FROM customers LIMIT ? OFFSET ?");
+            preparedStatement.setInt(1,limit);
+            preparedStatement.setInt(2, offset);
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                customers.add(
+                        new Customer(
+                                resultSet.getInt("CustomerId"),
+                                resultSet.getString("FirstName"),
+                                resultSet.getString("LastName"),
+                                resultSet.getString("Country"),
+                                resultSet.getString("PostalCode"),
+                                resultSet.getString("Phone"),
+                                resultSet.getString("Email")
+
+                        ));
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return customers;
+        }
+    }
+
     public Boolean addCustomer(Customer customer){
         try{
 
@@ -221,5 +268,7 @@ public class DataBaseHandler {
             return true;
         }
     }
+
+
 
 }
