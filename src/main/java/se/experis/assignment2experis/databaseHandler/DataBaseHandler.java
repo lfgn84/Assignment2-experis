@@ -241,7 +241,8 @@ public class DataBaseHandler {
 
             // Prepare Statement
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("UPDATE customers SET FirstName = ?, LastName = ?, Country = ?, PostalCode = ?, Phone = ?, Email = ? WHERE CustomerId = ?;");
+                    conn.prepareStatement("UPDATE customers SET FirstName = ?, LastName = ?, Country = ?, " +
+                            "PostalCode = ?, Phone = ?, Email = ? WHERE CustomerId = ?;");
             preparedStatement.setString(1, customer.getFirstName());
             preparedStatement.setString(2, customer.getLastName());
             preparedStatement.setString(3, customer.getCountry());
@@ -305,6 +306,41 @@ public class DataBaseHandler {
         }
     }
 
+    public ArrayList<String> HighestSpendersInCustomers(){
+        ArrayList<String> countryList = new ArrayList<String>();
+        try {
+            // Open Connection
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection to SQLite has been established.");
 
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT FirstName, SUM(invoices.total) AS total FROM customers " +
+                            "INNER JOIN invoices ON customers.CustomerId = invoices.CustomerId GROUP BY FirstName ORDER BY total DESC");
+
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                countryList.add(resultSet.getString("FirstName") + ": " + resultSet.getString("total"));
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return countryList;
+        }
+    }
 
 }

@@ -48,6 +48,10 @@ public class CustomerController {
     public ArrayList<String> CountryAmountInCustomers(){
         return service.CountryAmountInCustomers();
     }
+    @GetMapping("/spenders")
+    public ArrayList<String> HighestSpendersInCustomers(){
+        return service.HighestSpendersInCustomers();
+    }
 
 
 

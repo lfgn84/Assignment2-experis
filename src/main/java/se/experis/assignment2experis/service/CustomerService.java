@@ -33,4 +33,7 @@ public class CustomerService {
     public ArrayList<String> CountryAmountInCustomers (){
         return dataBaseHandler.CountryAmountInCustomers();
     }
+    public ArrayList<String> HighestSpendersInCustomers (){
+        return dataBaseHandler.HighestSpendersInCustomers();
+    }
 }
