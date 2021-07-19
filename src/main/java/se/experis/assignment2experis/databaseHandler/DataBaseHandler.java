@@ -150,4 +150,39 @@ public class DataBaseHandler {
             return customers;
         }
     }
+
+    public Boolean addCustomer(Customer customer){
+        try{
+
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection to SQLite has been established.");
+
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("INSERT INTO customers (FirstName,LastName,Country, PostalCode, Phone, Email ) VALUES (?,?,?,?,?,?);");
+            preparedStatement.setString(1, customer.getFirstName());
+            preparedStatement.setString(2, customer.getLastName());
+            preparedStatement.setString(3, customer.getCountry());
+            preparedStatement.setString(4, customer.getPostalCode());
+            preparedStatement.setString(5, customer.getPhone());
+            preparedStatement.setString(6, customer.getEmail());
+
+            preparedStatement.executeUpdate();
+            //preparedStatement.executeQuery();
+
+        }catch(Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return true;
+        }
+    }
 }

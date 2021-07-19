@@ -1,10 +1,7 @@
 package se.experis.assignment2experis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.experis.assignment2experis.Models.Customer;
 import se.experis.assignment2experis.service.CustomerService;
 
@@ -30,9 +27,14 @@ public class CustomerController {
         return service.getAllCustomers();
     }
 
-    @GetMapping("selectCustomersLike/{name}")
+    @GetMapping("/selectCustomersLike/{name}")
     public ArrayList<Customer> selectCustomersLike(@PathVariable String name){
         return service.selectCustomersLike(name);
+    }
+
+    @GetMapping("/add")
+    public Boolean addCustomer(){
+        return service.addCustomer(new Customer(1,"Markus", "Wrang", "asd", "asd", "asd", "asd"));
     }
 
 

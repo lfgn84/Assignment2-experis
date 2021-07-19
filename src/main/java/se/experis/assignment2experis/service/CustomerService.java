@@ -21,4 +21,7 @@ public class CustomerService {
     public ArrayList<Customer> selectCustomersLike(String name){
         return dataBaseHandler.selectCustomersLike(name);
     }
+    public Boolean addCustomer (Customer customer){
+        return dataBaseHandler.addCustomer(customer);
+    }
 }
