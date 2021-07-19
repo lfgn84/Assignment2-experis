@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import se.experis.assignment2experis.Models.Customer;
 import se.experis.assignment2experis.service.CustomerService;
 
 import java.sql.Connection;
@@ -19,11 +20,16 @@ public class CustomerController {
     // Setup
     CustomerService service = new CustomerService();
 
-    @GetMapping("/{id}")
-    public  String TestString(@PathVariable int id){
-
-        return  service.getCustomerById(id).getFirstName() + " " + service.getCustomerById(id).getLastName();
+    @GetMapping("getCustomerById/{id}")
+    public Customer getCustomerById(@PathVariable int id){
+        return  service.getCustomerById(id);
     }
+
+    @GetMapping("/all")
+    public ArrayList<Customer> getAllCustomers(){
+        return service.getAllCustomers();
+    }
+
 
 
     /*

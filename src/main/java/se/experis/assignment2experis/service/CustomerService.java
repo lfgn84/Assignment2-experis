@@ -15,4 +15,7 @@ public class CustomerService {
     public Customer getCustomerById (int id){
       return   dataBaseHandler.testConnection(id);
     }
+    public ArrayList<Customer> getAllCustomers(){
+        return dataBaseHandler.selectAllCustomers();
+    }
 }
