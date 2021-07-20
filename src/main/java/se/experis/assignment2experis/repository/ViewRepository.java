@@ -60,4 +60,73 @@ public class ViewRepository {
             return randomSongs;
         }
     }
+
+    public ArrayList<String> get5RandomArtists(){
+        ArrayList<String> randomArtists = new ArrayList<>();
+        try {
+            // Open Connection
+            connect();
+
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT Name FROM artists WHERE artistid IN (SELECT artistid FROM artists ORDER BY RANDOM() LIMIT 5)");
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                randomArtists.add(( resultSet.getString("Name")));
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return randomArtists;
+        }
+    }
+
+    public ArrayList<String> get5RandomAlbums(){
+        ArrayList<String> randomAlbums = new ArrayList<>();
+        try {
+            // Open Connection
+            connect();
+
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT Title FROM albums WHERE albumid IN (SELECT albumid FROM albums ORDER BY RANDOM() LIMIT 5)");
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                randomAlbums.add(( resultSet.getString("Title")));
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return randomAlbums;
+        }
+    }
+
 }

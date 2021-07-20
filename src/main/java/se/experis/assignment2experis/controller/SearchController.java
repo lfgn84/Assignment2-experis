@@ -17,6 +17,9 @@ public class SearchController {
     @GetMapping("/index/list")
     public String list(Model model){
         model.addAttribute("randomSongs", service.get5RandomSongs());
-        return "Lists";
+        model.addAttribute("randomArtists", service.get5RandomArtists());
+        model.addAttribute("randomAlbums",service.get5RandomAlbums());
+        return "lists";
     }
+
 }
