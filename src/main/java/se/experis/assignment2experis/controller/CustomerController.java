@@ -54,48 +54,4 @@ public class CustomerController {
     public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(@PathVariable int id){
        return service.customerFavoriteGenres(id);
     }
-
-
-    /*
-    public ArrayList<Customer> selectAllCustomers(){
-        ArrayList<Customer> customers = new ArrayList<Customer>();
-        try {
-            // Open Connection
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
-
-            // Prepare Statement
-            PreparedStatement preparedStatement =
-                    conn.prepareStatement("SELECT Id,ContactName,City,Phone FROM customer");
-            // Execute Statement
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            // Process Results
-            while (resultSet.next()) {
-                customers.add(
-                        new Customer(
-                                resultSet.getString("Id"),
-                                resultSet.getString("ContactName"),
-                                resultSet.getString("City"),
-                                resultSet.getString("Phone")
-                        ));
-            }
-        }
-        catch (Exception ex){
-            System.out.println("Something went wrong...");
-            System.out.println(ex.toString());
-        }
-        finally {
-            try {
-                // Close Connection
-                conn.close();
-            }
-            catch (Exception ex){
-                System.out.println("Something went wrong while closing connection.");
-                System.out.println(ex.toString());
-            }
-            return customers;
-        }
-    }
-*/
 }
