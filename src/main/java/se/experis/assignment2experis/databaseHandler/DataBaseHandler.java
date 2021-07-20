@@ -253,7 +253,6 @@ public class DataBaseHandler {
             preparedStatement.setInt(7, customer.getCustomerId());
 
             preparedStatement.executeUpdate();
-            //preparedStatement.executeQuery();
 
         }catch(Exception ex){
             System.out.println("Something went wrong...");

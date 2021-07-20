@@ -13,7 +13,7 @@ public class CustomerController {
     // Setup
     CustomerService service = new CustomerService();
 
-    @GetMapping("getCustomerById/{id}")
+    @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable int id){
         return  service.getCustomerById(id);
     }
@@ -32,13 +32,13 @@ public class CustomerController {
         return service.pageCustomers(limit, offset);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public Boolean addCustomer(@RequestBody Customer customer){
         return service.addCustomer(customer);
     }
-    @GetMapping("/update")
-    public Boolean updateCustomer(){
-        return service.updateCustomer(new Customer(62,"Luis", "Gutierrez", "asd", "asd", "asd", "asd"));
+    @PutMapping("/{id}")
+    public Boolean updateCustomer(@PathVariable int id, @RequestBody Customer customer){
+        return service.updateCustomer(customer);
     }
     @GetMapping("/country")
     public ArrayList<CustomerCountry> CountryAmountInCustomers(){
