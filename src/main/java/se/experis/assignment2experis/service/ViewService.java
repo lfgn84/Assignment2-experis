@@ -12,4 +12,12 @@ public class ViewService {
     public ArrayList<String> get5RandomSongs(){
       return  viewRepository.get5RandomSongs();
     }
+
+    public ArrayList<String> get5RandomArtists(){
+        return  viewRepository.get5RandomArtists();
+    }
+
+    public ArrayList<String> get5RandomAlbums(){
+        return  viewRepository.get5RandomAlbums();
+    }
 }
