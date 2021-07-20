@@ -2,6 +2,7 @@ package se.experis.assignment2experis.databaseHandler;
 
 import org.springframework.stereotype.Repository;
 import se.experis.assignment2experis.Models.Customer;
+import se.experis.assignment2experis.Models.CustomerCountry;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -270,8 +271,9 @@ public class DataBaseHandler {
         }
     }
 
-    public ArrayList<String> CountryAmountInCustomers(){
-        ArrayList<String> countryList = new ArrayList<String>();
+
+    public ArrayList<CustomerCountry> CountryAmountInCustomers(){
+      ArrayList<CustomerCountry> countryList = new ArrayList<>();
         try {
             // Open Connection
             conn = DriverManager.getConnection(URL);
@@ -286,7 +288,10 @@ public class DataBaseHandler {
 
             // Process Results
             while (resultSet.next()) {
-                countryList.add(resultSet.getString("Country") + ": " + resultSet.getString("countryCount"));
+                countryList.add(
+                        new CustomerCountry(resultSet.getString("Country"),
+                                            resultSet.getInt("countryCount")  )
+                );
             }
         }
         catch (Exception ex){

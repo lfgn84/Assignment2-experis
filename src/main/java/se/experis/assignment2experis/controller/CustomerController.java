@@ -1,14 +1,10 @@
 package se.experis.assignment2experis.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.experis.assignment2experis.Models.Customer;
+import se.experis.assignment2experis.Models.CustomerCountry;
 import se.experis.assignment2experis.service.CustomerService;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 @RestController
@@ -45,7 +41,7 @@ public class CustomerController {
         return service.updateCustomer(new Customer(62,"Luis", "Gutierrez", "asd", "asd", "asd", "asd"));
     }
     @GetMapping("/country")
-    public ArrayList<String> CountryAmountInCustomers(){
+    public ArrayList<CustomerCountry> CountryAmountInCustomers(){
         return service.CountryAmountInCustomers();
     }
     @GetMapping("/spenders")

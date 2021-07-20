@@ -1,8 +1,8 @@
 package se.experis.assignment2experis.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.experis.assignment2experis.Models.Customer;
+import se.experis.assignment2experis.Models.CustomerCountry;
 import se.experis.assignment2experis.databaseHandler.DataBaseHandler;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class CustomerService {
     public Boolean updateCustomer (Customer customer){
         return dataBaseHandler.updateCustomer(customer);
     }
-    public ArrayList<String> CountryAmountInCustomers (){
+    public ArrayList<CustomerCountry> CountryAmountInCustomers (){
         return dataBaseHandler.CountryAmountInCustomers();
     }
     public ArrayList<String> HighestSpendersInCustomers (){
