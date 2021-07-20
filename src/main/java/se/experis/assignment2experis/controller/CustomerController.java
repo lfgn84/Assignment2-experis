@@ -32,9 +32,9 @@ public class CustomerController {
         return service.pageCustomers(limit, offset);
     }
 
-    @GetMapping("/add")
-    public Boolean addCustomer(){
-        return service.addCustomer(new Customer(1,"Markus", "Wrang", "asd", "asd", "asd", "asd"));
+    @PostMapping("/add")
+    public Boolean addCustomer(@RequestBody Customer customer){
+        return service.addCustomer(customer);
     }
     @GetMapping("/update")
     public Boolean updateCustomer(){
