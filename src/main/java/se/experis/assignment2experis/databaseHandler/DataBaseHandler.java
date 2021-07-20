@@ -18,13 +18,23 @@ public class DataBaseHandler {
     //String URL = "spring.datasource.url";
     Connection conn = null;
 
-    public Customer testConnection(int CustomerId){
+    public void connect(){
+        System.out.println("Trying to connect to database ");
+        try {
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection to SQLite has been established.");
+        }catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+
+    }
+
+    public Customer getCustomerById(int CustomerId){
         Customer customer = new Customer();
         try {
             // Open Connection
-            System.out.println("Trying to connect to database ");
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
             PreparedStatement preparedStatement =
@@ -67,8 +77,7 @@ public class DataBaseHandler {
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
             // Open Connection
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
             PreparedStatement preparedStatement =
@@ -112,8 +121,7 @@ public class DataBaseHandler {
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
             // Open Connection
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
             PreparedStatement preparedStatement =
@@ -158,8 +166,7 @@ public class DataBaseHandler {
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
             // Open Connection
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
             PreparedStatement preparedStatement =
@@ -204,8 +211,7 @@ public class DataBaseHandler {
     public Boolean addCustomer(Customer customer){
         try{
 
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
             PreparedStatement preparedStatement =
@@ -239,8 +245,7 @@ public class DataBaseHandler {
     public Boolean updateCustomer(Customer customer){
         try{
 
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
             PreparedStatement preparedStatement =
@@ -277,8 +282,7 @@ public class DataBaseHandler {
       ArrayList<CustomerCountry> countryList = new ArrayList<>();
         try {
             // Open Connection
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
             PreparedStatement preparedStatement =
@@ -354,8 +358,7 @@ public class DataBaseHandler {
         ArrayList<CustomerFavoriteGenre> genreFavorites = new ArrayList<>();
         try {
             // Open Connection
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            connect();
 
             // Prepare Statement
 
