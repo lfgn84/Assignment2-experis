@@ -1,10 +1,10 @@
-package se.experis.assignment2experis.databaseHandler;
+package se.experis.assignment2experis.repository;
 
 import org.springframework.stereotype.Repository;
-import se.experis.assignment2experis.Models.Customer;
-import se.experis.assignment2experis.Models.CustomerCountry;
-import se.experis.assignment2experis.Models.CustomerFavoriteGenre;
-import se.experis.assignment2experis.Models.CustomerSpender;
+import se.experis.assignment2experis.models.Customer;
+import se.experis.assignment2experis.models.CustomerCountry;
+import se.experis.assignment2experis.models.CustomerFavoriteGenre;
+import se.experis.assignment2experis.models.CustomerSpender;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 @Repository
-public class DataBaseHandler {
+public class CustomerRepository {
     String URL = "jdbc:sqlite::resource:chinook.db";
     //String URL = "spring.datasource.url";
     Connection conn = null;

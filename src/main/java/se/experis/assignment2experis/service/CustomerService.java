@@ -1,44 +1,44 @@
 package se.experis.assignment2experis.service;
 
 import org.springframework.stereotype.Service;
-import se.experis.assignment2experis.Models.Customer;
-import se.experis.assignment2experis.Models.CustomerCountry;
-import se.experis.assignment2experis.Models.CustomerFavoriteGenre;
-import se.experis.assignment2experis.Models.CustomerSpender;
-import se.experis.assignment2experis.databaseHandler.DataBaseHandler;
+import se.experis.assignment2experis.models.Customer;
+import se.experis.assignment2experis.models.CustomerCountry;
+import se.experis.assignment2experis.models.CustomerFavoriteGenre;
+import se.experis.assignment2experis.models.CustomerSpender;
+import se.experis.assignment2experis.repository.CustomerRepository;
 
 import java.util.ArrayList;
 
 @Service
 public class CustomerService {
 
-    DataBaseHandler dataBaseHandler = new DataBaseHandler();
+    CustomerRepository customerRepository = new CustomerRepository();
 
     public Customer getCustomerById (int id){
-      return   dataBaseHandler.getCustomerById(id);
+      return   customerRepository.getCustomerById(id);
     }
     public ArrayList<Customer> getAllCustomers(){
-        return dataBaseHandler.selectAllCustomers();
+        return customerRepository.selectAllCustomers();
     }
     public ArrayList<Customer> selectCustomersLike(String name){
-        return dataBaseHandler.selectCustomersLike(name);
+        return customerRepository.selectCustomersLike(name);
     }
     public ArrayList<Customer> pageCustomers(int limit, int offset){
-        return dataBaseHandler.pageCustomers(limit,offset);
+        return customerRepository.pageCustomers(limit,offset);
     }
     public Boolean addCustomer (Customer customer){
-        return dataBaseHandler.addCustomer(customer);
+        return customerRepository.addCustomer(customer);
     }
     public Boolean updateCustomer (Customer customer){
-        return dataBaseHandler.updateCustomer(customer);
+        return customerRepository.updateCustomer(customer);
     }
     public ArrayList<CustomerCountry> CountryAmountInCustomers (){
-        return dataBaseHandler.CountryAmountInCustomers();
+        return customerRepository.CountryAmountInCustomers();
     }
     public ArrayList<CustomerSpender> HighestSpendersInCustomers (){
-        return dataBaseHandler.HighestSpendersInCustomers();
+        return customerRepository.HighestSpendersInCustomers();
     }
     public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(int id){
-        return dataBaseHandler.customerFavoriteGenres(id);
+        return customerRepository.customerFavoriteGenres(id);
     }
 }

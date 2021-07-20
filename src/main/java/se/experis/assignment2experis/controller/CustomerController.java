@@ -1,10 +1,10 @@
 package se.experis.assignment2experis.controller;
 
 import org.springframework.web.bind.annotation.*;
-import se.experis.assignment2experis.Models.Customer;
-import se.experis.assignment2experis.Models.CustomerCountry;
-import se.experis.assignment2experis.Models.CustomerFavoriteGenre;
-import se.experis.assignment2experis.Models.CustomerSpender;
+import se.experis.assignment2experis.models.Customer;
+import se.experis.assignment2experis.models.CustomerCountry;
+import se.experis.assignment2experis.models.CustomerFavoriteGenre;
+import se.experis.assignment2experis.models.CustomerSpender;
 import se.experis.assignment2experis.service.CustomerService;
 
 import java.util.ArrayList;

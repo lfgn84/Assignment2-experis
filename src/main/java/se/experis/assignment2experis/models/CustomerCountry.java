@@ -1,4 +1,4 @@
-package se.experis.assignment2experis.Models;
+package se.experis.assignment2experis.models;
 
 public class CustomerCountry {
     private String country;
