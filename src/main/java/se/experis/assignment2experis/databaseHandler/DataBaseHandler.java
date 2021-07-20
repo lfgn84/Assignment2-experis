@@ -3,6 +3,8 @@ package se.experis.assignment2experis.databaseHandler;
 import org.springframework.stereotype.Repository;
 import se.experis.assignment2experis.Models.Customer;
 import se.experis.assignment2experis.Models.CustomerCountry;
+import se.experis.assignment2experis.Models.CustomerFavoriteGenre;
+import se.experis.assignment2experis.Models.CustomerSpender;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -310,8 +312,8 @@ public class DataBaseHandler {
         }
     }
 
-    public ArrayList<String> HighestSpendersInCustomers(){
-        ArrayList<String> countryList = new ArrayList<String>();
+    public ArrayList<CustomerSpender> HighestSpendersInCustomers(){
+        ArrayList<CustomerSpender> countryList = new ArrayList<>();
         try {
             // Open Connection
             conn = DriverManager.getConnection(URL);
@@ -327,7 +329,8 @@ public class DataBaseHandler {
 
             // Process Results
             while (resultSet.next()) {
-                countryList.add(resultSet.getString("FirstName") + ": " + resultSet.getString("total"));
+                    countryList.add(new CustomerSpender(resultSet.getString("FirstName"),resultSet.getInt("total")));
+               // countryList.add(resultSet.getString("FirstName") + ": " + resultSet.getString("total"));
             }
         }
         catch (Exception ex){
@@ -344,6 +347,53 @@ public class DataBaseHandler {
                 System.out.println(ex.toString());
             }
             return countryList;
+        }
+    }
+
+    public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(int id){
+        ArrayList<CustomerFavoriteGenre> genreFavorites = new ArrayList<>();
+        try {
+            // Open Connection
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection to SQLite has been established.");
+
+            // Prepare Statement
+
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT COUNT(tracks.genreid) mycount, genres.Name, tracks.genreid gen, customers.firstname FROM customers INNER JOIN invoices ON customers.CustomerId = invoices.CustomerId " +
+                            "INNER JOIN invoice_items ON invoices.InvoiceId = invoice_items.InvoiceId " +
+                            "INNER JOIN tracks ON invoice_items.TrackId = tracks.TrackId INNER JOIN genres ON genres.GenreId = tracks.GenreId WHERE customers.CustomerId = ? GROUP BY tracks.genreid HAVING COUNT(tracks.GenreId) = ( " +
+                            "SELECT MAX(mycount) " +
+                            "FROM " +
+                            "(SELECT COUNT(tracks.genreid) mycount, tracks.genreid gen, customers.firstname FROM customers INNER JOIN invoices ON customers.CustomerId = invoices.CustomerId " +
+                            "INNER JOIN invoice_items ON invoices.InvoiceId = invoice_items.InvoiceId " +
+                            "INNER JOIN tracks ON invoice_items.TrackId = tracks.TrackId WHERE customers.CustomerId = ? GROUP BY tracks.genreid))");
+            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(2,id);
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                genreFavorites.add(
+                        new CustomerFavoriteGenre(resultSet.getString("name"))
+                );
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return genreFavorites;
         }
     }
 

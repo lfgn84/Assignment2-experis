@@ -3,6 +3,8 @@ package se.experis.assignment2experis.controller;
 import org.springframework.web.bind.annotation.*;
 import se.experis.assignment2experis.Models.Customer;
 import se.experis.assignment2experis.Models.CustomerCountry;
+import se.experis.assignment2experis.Models.CustomerFavoriteGenre;
+import se.experis.assignment2experis.Models.CustomerSpender;
 import se.experis.assignment2experis.service.CustomerService;
 
 import java.util.ArrayList;
@@ -45,10 +47,13 @@ public class CustomerController {
         return service.CountryAmountInCustomers();
     }
     @GetMapping("/spenders")
-    public ArrayList<String> HighestSpendersInCustomers(){
+    public ArrayList<CustomerSpender> HighestSpendersInCustomers(){
         return service.HighestSpendersInCustomers();
     }
-
+    @GetMapping("/favourites/{id}")
+    public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(@PathVariable int id){
+       return service.customerFavoriteGenres(id);
+    }
 
 
     /*

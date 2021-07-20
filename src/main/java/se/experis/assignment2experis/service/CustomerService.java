@@ -3,6 +3,8 @@ package se.experis.assignment2experis.service;
 import org.springframework.stereotype.Service;
 import se.experis.assignment2experis.Models.Customer;
 import se.experis.assignment2experis.Models.CustomerCountry;
+import se.experis.assignment2experis.Models.CustomerFavoriteGenre;
+import se.experis.assignment2experis.Models.CustomerSpender;
 import se.experis.assignment2experis.databaseHandler.DataBaseHandler;
 
 import java.util.ArrayList;
@@ -33,7 +35,10 @@ public class CustomerService {
     public ArrayList<CustomerCountry> CountryAmountInCustomers (){
         return dataBaseHandler.CountryAmountInCustomers();
     }
-    public ArrayList<String> HighestSpendersInCustomers (){
+    public ArrayList<CustomerSpender> HighestSpendersInCustomers (){
         return dataBaseHandler.HighestSpendersInCustomers();
+    }
+    public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(int id){
+        return dataBaseHandler.customerFavoriteGenres(id);
     }
 }
