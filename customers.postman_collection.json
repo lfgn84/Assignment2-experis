@@ -1,0 +1,210 @@
+{
+  "info": {
+    "_postman_id": "b3e70e30-ea67-4ff5-9a53-e2cd3e15a430",
+    "name": "Assignment 2 Experis",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Customers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/all",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Customer by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Custmer by Name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/selectCustomerByName/John",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "selectCustomerByName",
+            "John"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Customers by Paging",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/page/10,30",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "page",
+            "10,30"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add New Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Country\":\"Sweden\",\r\n    \"FirstName\" : \"Kristin\",\r\n    \"LastName\": \"Åkerlund\",\r\n    \"Phone\":\"555-9807\",\r\n    \"PostalCode\":\"90210\",\r\n    \"Email\":\"kristin@socialNetwrok.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/customers/add",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Customer",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "    { \"country\": \"Mexico\",\r\n        \"phone\": \"+49 0711 2842222\",\r\n        \"customerId\": 2,\r\n        \"firstName\": \"Leonie\",\r\n        \"lastName\": \"Köhler\",\r\n        \"postalCode\": \"70174\",\r\n        \"email\": \"leonekohler@surfeu.de\"\r\n        }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/customers/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Customers by Country",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/country",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "country"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Highest Spenders Customers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/spenders",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "spenders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Favourite Genre by Customer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/favourites/20",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "favourites",
+            "20"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
