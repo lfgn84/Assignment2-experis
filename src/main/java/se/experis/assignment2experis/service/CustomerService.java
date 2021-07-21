@@ -23,6 +23,9 @@ public class CustomerService {
     public ArrayList<Customer> selectCustomersLike(String name){
         return customerRepository.selectCustomersLike(name);
     }
+    public ArrayList<Customer> selectCustomerByName(String name){
+        return customerRepository.selectCustomerByName(name);
+    }
     public ArrayList<Customer> pageCustomers(int limit, int offset){
         return customerRepository.pageCustomers(limit,offset);
     }

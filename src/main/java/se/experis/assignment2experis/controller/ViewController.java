@@ -8,7 +8,7 @@ import se.experis.assignment2experis.service.ViewService;
 
 
 @Controller
-public class SearchController {
+public class ViewController {
     ViewService service = new ViewService();
 
     @GetMapping("/")
