@@ -65,5 +65,31 @@
     </table>
 </div>
 
+<form action="#" th:action="@{/}">
+    <input type="text" th:value="${keyWord}">
+    <button name="submit" type="submit" value="0">Search</button>
+</form>
+
+<table border="1" class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+        <th> Track</th>
+        <th> Artist</th>
+        <th> Album</th>
+        <th> Genre</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="record: ${searching}">
+        <td th:text="${record.track}"></td>
+        <td th:text="${record.artist}"></td>
+        <td th:text="${record.album}"></td>
+        <td th:text="${record.genre}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
 </body>
 </html>
