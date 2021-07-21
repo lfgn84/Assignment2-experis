@@ -10,7 +10,7 @@ import se.experis.assignment2experis.service.ViewService;
 public class SearchController {
     ViewService service = new ViewService();
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String list(Model model){
         model.addAttribute("randomSongs", service.get5RandomSongs());
         model.addAttribute("randomArtists", service.get5RandomArtists());
