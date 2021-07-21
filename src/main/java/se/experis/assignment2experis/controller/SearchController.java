@@ -11,15 +11,11 @@ public class SearchController {
     ViewService service = new ViewService();
 
     @GetMapping("/index")
-    public String index(){
-        return "index";
-    }
-    @GetMapping("/index/list")
     public String list(Model model){
         model.addAttribute("randomSongs", service.get5RandomSongs());
         model.addAttribute("randomArtists", service.get5RandomArtists());
         model.addAttribute("randomAlbums",service.get5RandomAlbums());
-        return "lists";
+        return "index";
     }
 
 }
