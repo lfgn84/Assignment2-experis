@@ -125,8 +125,9 @@ public class CustomerRepository {
 
             // Prepare Statement
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("SELECT * FROM customers WHERE FirstName LIKE ?");
+                    conn.prepareStatement("SELECT * FROM customers WHERE FirstName LIKE ? OR LastName LIKE ?");
             preparedStatement.setString(1,"%"+name+"%");
+            preparedStatement.setString(2,"%"+name+"%");
             // Execute Statement
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -170,8 +171,10 @@ public class CustomerRepository {
 
             // Prepare Statement
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("SELECT * FROM customers WHERE FirstName = ?");
+                    conn.prepareStatement("SELECT * FROM customers WHERE FirstName = ? OR LastName = ?");
             preparedStatement.setString(1,name);
+            preparedStatement.setString(2,name);
+
             // Execute Statement
             ResultSet resultSet = preparedStatement.executeQuery();
 

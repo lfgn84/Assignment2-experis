@@ -25,7 +25,7 @@ public class CustomerController {
         return service.getAllCustomers();
     }
     @GetMapping("/selectCustomerByName/{name}")
-    public ArrayList<Customer> selectCustomerByName(@PathVariable String name){
+    public ArrayList<Customer> selectCustomerBySpecificName(@PathVariable String name){
         return service.selectCustomerByName(name);
     }
 
