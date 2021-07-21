@@ -1,6 +1,7 @@
 package se.experis.assignment2experis.service;
 
 import org.springframework.stereotype.Service;
+import se.experis.assignment2experis.models.SearchResult;
 import se.experis.assignment2experis.repository.ViewRepository;
 
 import java.util.ArrayList;
@@ -20,4 +21,9 @@ public class ViewService {
     public ArrayList<String> get5RandomAlbums(){
         return  viewRepository.get5RandomAlbums();
     }
+
+    public ArrayList<SearchResult> getTracksByKeyword(String keyWord){
+        return  viewRepository.searchingByKeyword(keyWord);
+    }
+
 }

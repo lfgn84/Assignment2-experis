@@ -1,7 +1,7 @@
 package se.experis.assignment2experis.repository;
 
 import org.springframework.stereotype.Repository;
-import se.experis.assignment2experis.models.Customer;
+import se.experis.assignment2experis.models.SearchResult;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -126,6 +126,51 @@ public class ViewRepository {
                 System.out.println(ex.toString());
             }
             return randomAlbums;
+        }
+    }
+
+    public ArrayList<SearchResult> searchingByKeyword(String keyWord){
+        ArrayList<SearchResult> resultsByKeyword = new ArrayList<>();
+        try {
+            // Open Connection
+            connect();
+
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT tracks.Name track, artists.Name artist, albums.Title album, genres.Name genre FROM genres INNER JOIN tracks ON genres.GenreId = tracks.genreid INNER JOIN albums ON tracks.AlbumId = albums.AlbumId " +
+                            "INNER JOIN artists ON albums.ArtistId  = artists.ArtistId WHERE tracks.name LIKE ? OR artists.Name LIKE ? OR albums.Title LIKE ? OR genres.Name LIKE ? ");
+            preparedStatement.setString(1,"%"+keyWord+"%");
+            preparedStatement.setString(2,"%"+keyWord+"%");
+            preparedStatement.setString(3,"%"+keyWord+"%");
+            preparedStatement.setString(4,"%"+keyWord+"%");
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                resultsByKeyword.add(
+                        new SearchResult(resultSet.getString("track"),
+                                  resultSet.getString("artist"),
+                                  resultSet.getString("album"),
+                                  resultSet.getString("genre")
+                                )
+                );
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return resultsByKeyword;
         }
     }
 
