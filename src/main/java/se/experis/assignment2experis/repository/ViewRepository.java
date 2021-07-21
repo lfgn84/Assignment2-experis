@@ -27,6 +27,10 @@ public class ViewRepository {
 
     }
 
+    /**
+     * Selects 5 random songs from the tracks table
+     * @return A list of 5 random songs from the tracks table
+     */
     public ArrayList<String> get5RandomSongs(){
         ArrayList<String> randomSongs = new ArrayList<>();
         try {
@@ -60,7 +64,10 @@ public class ViewRepository {
             return randomSongs;
         }
     }
-
+    /**
+     * Selects 5 random artists from the artists table
+     * @return A list of 5 random artists from the artists table
+     */
     public ArrayList<String> get5RandomArtists(){
         ArrayList<String> randomArtists = new ArrayList<>();
         try {
@@ -94,7 +101,10 @@ public class ViewRepository {
             return randomArtists;
         }
     }
-
+    /**
+     * Selects 5 random album titles from the albums table
+     * @return A list of 5 random album titles from the albums table
+     */
     public ArrayList<String> get5RandomAlbums(){
         ArrayList<String> randomAlbums = new ArrayList<>();
         try {
@@ -128,7 +138,12 @@ public class ViewRepository {
             return randomAlbums;
         }
     }
-
+    /**
+     * takes a String as parameter and searches the databases genre, track, albums and artists. It check if the keyword
+     * matches either tracks.Name, artists.Name, albums.Title or genres.name and returns all rows where a match is found.
+     * @param keyWord the text you want to search for in the databases
+     * @return A list of SearchResult object
+     */
     public ArrayList<SearchResult> searchingByKeyword(String keyWord){
         ArrayList<SearchResult> resultsByKeyword = new ArrayList<>();
         try {
