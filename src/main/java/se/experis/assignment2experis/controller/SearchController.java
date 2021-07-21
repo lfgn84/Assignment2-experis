@@ -18,7 +18,9 @@ public class SearchController {
         model.addAttribute("randomSongs", service.get5RandomSongs());
         model.addAttribute("randomArtists", service.get5RandomArtists());
         model.addAttribute("randomAlbums",service.get5RandomAlbums());
+        if(!keyWord.equals("")){
         model.addAttribute("searching", service.getTracksByKeyword(keyWord));
+        }
         return "index";
     }
 
