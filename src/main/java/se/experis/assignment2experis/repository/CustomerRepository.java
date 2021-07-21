@@ -125,8 +125,56 @@ public class CustomerRepository {
 
             // Prepare Statement
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("SELECT * FROM customers WHERE FirstName LIKE ?");
+                    conn.prepareStatement("SELECT * FROM customers WHERE FirstName LIKE ? OR LastName LIKE ?");
             preparedStatement.setString(1,"%"+name+"%");
+            preparedStatement.setString(2,"%"+name+"%");
+            // Execute Statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process Results
+            while (resultSet.next()) {
+                customers.add(
+                        new Customer(
+                                resultSet.getInt("CustomerId"),
+                                resultSet.getString("FirstName"),
+                                resultSet.getString("LastName"),
+                                resultSet.getString("Country"),
+                                resultSet.getString("PostalCode"),
+                                resultSet.getString("Phone"),
+                                resultSet.getString("Email")
+
+                        ));
+            }
+        }
+        catch (Exception ex){
+            System.out.println("Something went wrong...");
+            System.out.println(ex.toString());
+        }
+        finally {
+            try {
+                // Close Connection
+                conn.close();
+            }
+            catch (Exception ex){
+                System.out.println("Something went wrong while closing connection.");
+                System.out.println(ex.toString());
+            }
+            return customers;
+        }
+    }
+
+    public ArrayList<Customer> selectCustomerByName(String name){
+        ArrayList<Customer> customers = new ArrayList<Customer>();
+        try {
+            // Open Connection
+            connect();
+
+            // Prepare Statement
+            PreparedStatement preparedStatement =
+                    conn.prepareStatement("SELECT * FROM customers WHERE FirstName = ? OR LastName = ?");
+            preparedStatement.setString(1,name);
+            preparedStatement.setString(2,name);
+
             // Execute Statement
             ResultSet resultSet = preparedStatement.executeQuery();
 

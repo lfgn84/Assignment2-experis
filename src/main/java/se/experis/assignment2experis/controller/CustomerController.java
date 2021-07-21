@@ -25,6 +25,10 @@ public class CustomerController {
     public ArrayList<Customer> getAllCustomers(){
         return service.getAllCustomers();
     }
+    @GetMapping("/selectCustomerByName/{name}")
+    public ArrayList<Customer> selectCustomerBySpecificName(@PathVariable String name){
+        return service.selectCustomerByName(name);
+    }
 
     @GetMapping("/selectCustomersLike/{name}")
     public ArrayList<Customer> selectCustomersLike(@PathVariable String name){
@@ -44,11 +48,11 @@ public class CustomerController {
         return service.updateCustomer(customer);
     }
     @GetMapping("/country")
-    public ArrayList<CustomerCountry> CountryAmountInCustomers(){
+    public ArrayList<CustomerCountry> countryAmountInCustomers(){
         return service.CountryAmountInCustomers();
     }
     @GetMapping("/spenders")
-    public ArrayList<CustomerSpender> HighestSpendersInCustomers(){
+    public ArrayList<CustomerSpender> highestSpendersInCustomers(){
         return service.HighestSpendersInCustomers();
     }
     @GetMapping("/favourites/{id}")
