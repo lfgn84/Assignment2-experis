@@ -10,6 +10,7 @@
 
 </head>
 <body>
+<div style="display: -webkit-box">
 <div class="col-sm-4">
     <h1>
         5 Random Songs
@@ -64,10 +65,9 @@
         </tbody>
     </table>
 </div>
-<br>
-<br>
-<br>
-<form action="#" th:action="@{/}">
+</div>
+<div th:class="col-sm-12">
+<form action="#" th:action="@{/}" style="margin-bottom: 10px;">
     <input type="text" name="keyWord" th:value="${keyWord}">
     <button name="submit" type="submit" value="0">Search</button>
 </form>
@@ -90,6 +90,7 @@
     </tr>
     </tbody>
 </table>
+</div>
 
 
 
