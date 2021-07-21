@@ -26,7 +26,7 @@
         </thead>
         <tbody>
         <tr th:each="customer: ${allCustomers}">
-            <td th:text="${customer.getFirstName() +  customer.getLastName()}"></td>
+            <td th:text="${customer.getFirstName() + ' ' +  customer.getLastName()}"></td>
             <td th:text="${customer.getCountry()}"></td>
             <td th:text="${customer.getEmail()}"></td>
             <td th:text="${customer.getPhone()}"></td>
