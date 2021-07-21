@@ -8,7 +8,7 @@ import se.experis.assignment2experis.service.ViewService;
 
 
 @Controller
-public class SearchController {
+public class ViewController {
     ViewService service = new ViewService();
 
     @GetMapping("/")
@@ -20,6 +20,11 @@ public class SearchController {
         model.addAttribute("searching", service.getTracksByKeyword(keyWord));
         }
         return "index";
+    }
+
+    @GetMapping("/all")
+    public String getAllCustomers(Model model){
+        return "allCustomers";
     }
 
 

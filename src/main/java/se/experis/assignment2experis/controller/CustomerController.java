@@ -1,5 +1,6 @@
 package se.experis.assignment2experis.controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import se.experis.assignment2experis.models.Customer;
 import se.experis.assignment2experis.models.CustomerCountry;
@@ -34,7 +35,7 @@ public class CustomerController {
         return service.pageCustomers(limit, offset);
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     public Boolean addCustomer(@RequestBody Customer customer){
         return service.addCustomer(customer);
     }
