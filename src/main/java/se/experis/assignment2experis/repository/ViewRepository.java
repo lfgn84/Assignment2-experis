@@ -12,7 +12,6 @@ import java.util.ArrayList;
 @Repository
 public class ViewRepository {
     String URL = "jdbc:sqlite::resource:chinook.db";
-    //String URL = "spring.datasource.url";
     Connection conn = null;
 
     public void connect(){
