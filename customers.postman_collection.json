@@ -205,6 +205,26 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Delete Customer by ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/customers/67",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "customers",
+            "67"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
