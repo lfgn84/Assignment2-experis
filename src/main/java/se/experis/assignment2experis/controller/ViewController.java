@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import se.experis.assignment2experis.models.Customer;
 import se.experis.assignment2experis.service.CustomerService;
 import se.experis.assignment2experis.service.ViewService;
 
@@ -31,8 +34,18 @@ public class ViewController {
     }
 
     @GetMapping("/add")
-    public String addCustomers(Model model){
+    public String addCustomer(Model model) {
+        model.addAttribute("addCustomer", new Customer());
+        return "add-customer";
+    }
 
+    @PostMapping("/add")
+    public String addCustomer(@RequestBody Customer customer, Model model){
+        Boolean success = customerService.addCustomer(customer);
+        model.addAttribute("success", success);
+        if(success){
+            model.addAttribute("addCustomer", new Customer());
+        }
         return "add-customer";
     }
 
