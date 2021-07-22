@@ -44,4 +44,7 @@ public class CustomerService {
     public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(int id){
         return customerRepository.customerFavoriteGenres(id);
     }
+    public Boolean deleteCustomerById (int id){
+        return customerRepository.deleteCustomerById(id);
+    }
 }
