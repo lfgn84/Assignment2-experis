@@ -9,14 +9,14 @@ public class Customer {
     private String Phone;
     private String Email;
 
-    public Customer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email) {
-        CustomerId = customerId;
-        FirstName = firstName;
-        LastName = lastName;
-        Country = country;
-        PostalCode = postalCode;
-        Phone = phone;
-        Email = email;
+    public Customer(int CustomerId, String FirstName, String LastName, String Country, String PostalCode, String Phone, String Email) {
+        this.CustomerId = CustomerId;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Country = Country;
+        this.PostalCode = PostalCode;
+        this.Phone = Phone;
+        this.Email = Email;
     }
 
     public Customer(){

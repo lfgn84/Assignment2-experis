@@ -1,6 +1,7 @@
 package se.experis.assignment2experis.controller;
 
-import org.springframework.ui.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import se.experis.assignment2experis.models.Customer;
 import se.experis.assignment2experis.models.CustomerCountry;
@@ -10,11 +11,14 @@ import se.experis.assignment2experis.service.CustomerService;
 
 import java.util.ArrayList;
 
+
 @RestController
 @RequestMapping(path={"/api/customers"})
 public class CustomerController {
+
     // Setup
     CustomerService service = new CustomerService();
+    Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable int id){
@@ -38,7 +42,6 @@ public class CustomerController {
     public ArrayList<Customer> pageCustomers(@PathVariable int limit, @PathVariable int offset){
         return service.pageCustomers(limit, offset);
     }
-
     @PostMapping("/add")
     public Boolean addCustomer(@RequestBody Customer customer){
         return service.addCustomer(customer);
@@ -59,4 +62,9 @@ public class CustomerController {
     public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(@PathVariable int id){
        return service.customerFavoriteGenres(id);
     }
+    @DeleteMapping("/{id}")
+    public Boolean deleteCustomerById(@PathVariable int id){
+        return service.deleteCustomerById(id);
+    }
+
 }
