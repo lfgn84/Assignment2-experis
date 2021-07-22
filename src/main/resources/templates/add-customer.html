@@ -17,42 +17,48 @@
 <div class="row justify-content-center align-items-center">
     <h1 class="display-3">New customer</h1>
 </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success}">
+    <strong>Success!</strong> The new customer was added.
+</div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${success} == false">
+    <strong>Oops!</strong> Something has gone wrong :(
+</div>
 <div class="row">
     <div class="col-sm-6 offset-3">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded">
             <div class="card-body">
 
-                <form action="#"   method="post">
+                <form action="#" th:action="@{/add-customers}" th:object="${customer}" method="post">
                 <div>
                     <div class="form-group" style="width: 48%; display: inline-block;">
                         <label for="inputFirstName">First name</label>
-                        <input type="text" class="form-control" id="inputFirstName"  required />
+                        <input type="text" class="form-control" id="inputFirstName" th:field="*{firstName}"  required />
                         <small id="contactHelp" class="form-text text-muted">What's your name?</small>
                     </div>
                     <div class="form-group" style="width: 48%; float: right">
                         <label for="inputLastName">Last name</label>
-                        <input type="text" class="form-control" id="inputLastName"  required />
+                        <input type="text" class="form-control" id="inputLastName" th:field="*{lastName}" required />
                     </div>
                 </div>
                     <div class="form-group">
                         <label for="inputId">Country</label>
-                        <input type="text" class="form-control" id="inputId"  required />
+                        <input type="text" class="form-control" id="inputId" th:field="*{country}" required />
                         <small id="countryHelp" class="form-text text-muted">What country are you from?</small>
                     </div>
                     <div class="form-group">
                         <label for="inputPostalCode">Postal Code</label>
-                        <input type="text" class="form-control" id="inputPostalCode"  required />
+                        <input type="text" class="form-control" id="inputPostalCode" th:field="*{postalCode}" required />
                         <small id="postalHelp" class="form-text text-muted">Postal Code (e.g. 12345)</small>
                     </div>
 
                     <div class="form-group">
                         <label for="inputPhone">Phone</label>
-                        <input type="text" class="form-control" id="inputPhone"  required />
+                        <input type="text" class="form-control" id="inputPhone" th:field="*{phone}" required />
                         <small id="phoneHelp" class="form-text text-muted">Include your international code (e.g. +46)</small>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">Email</label>
-                        <input type="text" class="form-control" id="inputEmail"  required />
+                        <input type="text" class="form-control" id="inputEmail" th:field="*{email}" required />
                         <small id="emailHelp" class="form-text text-muted">What is you email address?</small>
                     </div>
                     <button type="submit" class="btn btn-success">Add</button>

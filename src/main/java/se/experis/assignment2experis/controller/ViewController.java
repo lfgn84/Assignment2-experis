@@ -35,7 +35,7 @@ public class ViewController {
 
     @GetMapping("/add")
     public String addCustomer(Model model) {
-        model.addAttribute("addCustomer", new Customer());
+        model.addAttribute("customer", new Customer());
         return "add-customer";
     }
 
@@ -44,7 +44,7 @@ public class ViewController {
         Boolean success = customerService.addCustomer(customer);
         model.addAttribute("success", success);
         if(success){
-            model.addAttribute("addCustomer", new Customer());
+            model.addAttribute("customer", new Customer());
         }
         return "add-customer";
     }
