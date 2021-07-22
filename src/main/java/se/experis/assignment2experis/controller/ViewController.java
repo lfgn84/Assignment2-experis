@@ -40,7 +40,7 @@ public class ViewController {
     }
 
     @PostMapping("/add")
-    public String addCustomer(@RequestBody Customer customer, Model model){
+    public String addCustomer(Customer customer, Model model){
         Boolean success = customerService.addCustomer(customer);
         model.addAttribute("success", success);
         if(success){
