@@ -15,9 +15,11 @@ import java.util.ArrayList;
 @Repository
 public class CustomerRepository {
     String URL = "jdbc:sqlite::resource:chinook.db";
-    //String URL = "spring.datasource.url";
     Connection conn = null;
 
+    /**
+     * Method that establish a connection with database
+     */
     public void connect(){
         System.out.println("Trying to connect to database ");
         try {
@@ -30,6 +32,11 @@ public class CustomerRepository {
 
     }
 
+    /**
+     *
+     * @param CustomerId Id Integer used for selecting a specific customer
+     * @return Customer object of the desired customer with the specified Id
+     */
     public Customer getCustomerById(int CustomerId){
         Customer customer = new Customer();
         try {
@@ -72,7 +79,10 @@ public class CustomerRepository {
         }
         return customer;
     }
-
+    /**
+     * Select all Customer objects from the database
+     * @return ArrayList with all Customer objects from database
+     */
     public ArrayList<Customer> selectAllCustomers(){
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
@@ -116,7 +126,11 @@ public class CustomerRepository {
             return customers;
         }
     }
-
+    /**
+     * Select Customer objects where parameter matches Customer's first name or last name in any way
+     * @param name String with the name to search for
+     * @return ArrayList with with Customer objects that matches first name or last name in any way with input parameter
+     */
     public ArrayList<Customer> selectCustomersLike(String name){
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
@@ -162,7 +176,11 @@ public class CustomerRepository {
             return customers;
         }
     }
-
+    /**
+     * Select Customer objects where parameter matches Customer's first name or last name specifically
+     * @param name String with the name to search for among Customers objects
+     * @return ArrayList with with Customer objects that matches first name or last name specifically with input parameter
+     */
     public ArrayList<Customer> selectCustomerByName(String name){
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
@@ -209,7 +227,12 @@ public class CustomerRepository {
             return customers;
         }
     }
-
+    /**
+     * Select Customer objects according to paging parameters
+     * @param limit Integer that defines how big the Customer objects list should be
+     * @param offset Integer that defines the index of Customer objects list where paging should begin
+     * @return ArrayList according to paging parameters
+     */
     public ArrayList<Customer> pageCustomers(int limit, int offset){
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
@@ -255,7 +278,11 @@ public class CustomerRepository {
             return customers;
         }
     }
-
+    /**
+     * Create new Customer object in database
+     * @param customer Customer object to be inserted in database
+     * @return Boolean indicating if Customer object creation was successful or not
+     */
     public Boolean addCustomer(Customer customer){
         try{
 
@@ -289,7 +316,11 @@ public class CustomerRepository {
             return true;
         }
     }
-
+    /**
+     * Update a Customer object in database
+     * @param customer Customer object to be updated in database
+     * @return  Boolean indicating if Customer object updating was successful or not
+     */
     public Boolean updateCustomer(Customer customer){
         try{
 
@@ -324,8 +355,10 @@ public class CustomerRepository {
             return true;
         }
     }
-
-
+    /**
+     * Select a list of countries and their amount of customers per country in descending order
+     * @return ArrayList with CustomerCountry objects listing each country and its number of customers
+     */
     public ArrayList<CustomerCountry> CountryAmountInCustomers(){
       ArrayList<CustomerCountry> countryList = new ArrayList<>();
         try {
@@ -363,7 +396,10 @@ public class CustomerRepository {
             return countryList;
         }
     }
-
+    /**
+     * Select a list of customers and the amount each customer spends in descending order
+     * @return ArrayList with CustomerSpender objects listing each customer and the amount they have spent
+     */
     public ArrayList<CustomerSpender> HighestSpendersInCustomers(){
         ArrayList<CustomerSpender> countryList = new ArrayList<>();
         try {
@@ -401,7 +437,11 @@ public class CustomerRepository {
             return countryList;
         }
     }
-
+    /**
+     * Select favourite genre or genres of specific customer by Id
+     * @param id Integer that identifies Customer object where we want to see favourite genre or genres
+     * @return ArrayList of CustomerFavoriteGenre objects listing favourite genre or genres from specific customer by Id
+     */
     public ArrayList<CustomerFavoriteGenre> customerFavoriteGenres(int id){
         ArrayList<CustomerFavoriteGenre> genreFavorites = new ArrayList<>();
         try {
@@ -448,6 +488,11 @@ public class CustomerRepository {
         }
     }
 
+    /**
+     * Delete a specific customer by Id from database
+     * @param id Integer that identifies Customer's Id to be deleted
+     * @return Boolean indicating if Customer object removal was successful or not
+     */
     public Boolean deleteCustomerById(int id){
         try {
             // Open Connection

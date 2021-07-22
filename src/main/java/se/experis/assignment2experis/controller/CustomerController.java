@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @RequestMapping(path={"/api/customers"})
 public class CustomerController {
 
-    // Setup
+
     CustomerService service = new CustomerService();
     Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
