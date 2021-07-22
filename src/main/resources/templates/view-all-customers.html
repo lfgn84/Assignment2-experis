@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: sticky; top:0; z-index: 1;">
     <a class="navbar-brand" href="/">
         <img th:src="@{/img/itunes.png}" width="30" height="30" alt="">
     </a>
     <a class="nav-item nav-link" href="/all">All customers</a>
-    <a class="nav-item nav-link" href="/api/customers">Add customer</a>
+    <a class="nav-item nav-link" href="/add">Add customer</a>
 </nav>
 <div>
 
-    <table border="1" class = "table table-striped table-responsive-md">
+    <table border="1" class = "table table-striped table-responsive-md col-sm-12">
         <thead>
         <tr>
             <th> Name</th>

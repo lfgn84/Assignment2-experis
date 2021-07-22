@@ -27,7 +27,13 @@ public class ViewController {
     @GetMapping("/all")
     public String getAllCustomers(Model model){
         model.addAttribute("allCustomers", customerService.getAllCustomers());
-        return "allCustomers";
+        return "view-all-customers";
+    }
+
+    @GetMapping("/add")
+    public String addCustomers(Model model){
+
+        return "add-customer";
     }
 
 
