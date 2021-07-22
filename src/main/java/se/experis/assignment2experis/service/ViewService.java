@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 @Service
 public class ViewService {
+    /**
+     * Service class that handles methods from database repository to be applied on controller
+     *
+     */
     ViewRepository viewRepository = new ViewRepository();
 
     public ArrayList<String> get5RandomSongs(){

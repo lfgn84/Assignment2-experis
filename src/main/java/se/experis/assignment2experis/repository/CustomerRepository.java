@@ -31,7 +31,6 @@ public class CustomerRepository {
         }
 
     }
-
     /**
      *
      * @param CustomerId Id Integer used for selecting a specific customer
@@ -487,7 +486,6 @@ public class CustomerRepository {
             return genreFavorites;
         }
     }
-
     /**
      * Delete a specific customer by Id from database
      * @param id Integer that identifies Customer's Id to be deleted

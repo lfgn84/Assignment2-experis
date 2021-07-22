@@ -11,7 +11,10 @@ import java.util.ArrayList;
 
 @Service
 public class CustomerService {
-
+    /**
+     * Service class that handles methods from database repository to be applied on controller
+     *
+     */
     CustomerRepository customerRepository = new CustomerRepository();
 
     public Customer getCustomerById (int id){

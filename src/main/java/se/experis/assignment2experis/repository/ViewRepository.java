@@ -13,7 +13,9 @@ import java.util.ArrayList;
 public class ViewRepository {
     String URL = "jdbc:sqlite::resource:chinook.db";
     Connection conn = null;
-
+    /**
+     * Method that establish a connection with database
+     */
     public void connect(){
         System.out.println("Trying to connect to database ");
         try {
